@@ -1,21 +1,15 @@
+import sys
 import pygame
 
-WIDTH = 800
-HEIGHT = 600
-BACKGROUND = (0, 0, 0)
+pygame.init()
+WIDTH = 1200
+HEIGHT = 800
+screen = pygame.display.set_mode((WIDTH, HEIGHT))
+clock = pygame.time.Clock()
 
-
-def main():
-    pygame.init()
-    screen = pygame.display.set_mode((WIDTH, HEIGHT))
-    clock = pygame.time.Clock()
-
-    while True:
-        screen.fill(BACKGROUND)
-        pygame.display.flip()
-
-        clock.tick(60)
-
-
-if __name__ == "__main__":
-    main()
+while True:
+    for event in pygame.event.get():
+        if event == pygame.QUIT:
+            pygame.quit()
+            sys.exit()
+        screen.fill('black')
