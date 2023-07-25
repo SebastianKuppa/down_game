@@ -26,8 +26,24 @@ class Level:
                     p1 = Player((x, y))
                     self.player.add(p1)
 
+    def scroll_x(self):
+        player = self.player.sprites()[0]
+        player_x = player.rect.x
+        player_direction = player.direction.x
+
+        if player_x < 200 and player_direction < 0:
+            player.speed = 0
+            self.world_shift = 8
+        elif player_x > 1000 and player_direction > 0:
+            player.speed = 0
+            self.world_shift = -8
+        else:
+            player.speed = 8
+            self.world_shift = 0
+
     def run(self):
         self.tiles.update(self.world_shift)
         self.tiles.draw(self.display_surface)
         self.player.update()
         self.player.draw(self.display_surface)
+        self.scroll_x()
