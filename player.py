@@ -24,8 +24,12 @@ class Player(pygame.sprite.Sprite):
     def get_input(self):
         keys = pygame.key.get_pressed()
         if keys[pygame.K_RIGHT]:
+            if keys[pygame.K_SPACE]:
+                self.jump()
             self.direction.x = 1
         elif keys[pygame.K_LEFT]:
+            if keys[pygame.K_SPACE]:
+                self.jump()
             self.direction.x = -1
         elif keys[pygame.K_SPACE]:
             self.jump()
